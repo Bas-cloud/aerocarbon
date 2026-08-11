@@ -14,22 +14,32 @@
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
 
     <style>
-        /* CSS Variabelen voor snelle merkaanpassingen */
+        /* ==========================================
+           CARBONPRO - DESIGN SYSTEM (APPLE-STYLE)
+           ========================================== */
         :root {
             --bg-dark: #0a0a0a;
             --text-light: #f5f5f7;
             --accent: #d4af37; 
+            --bg-color: #fbfbfd;
+            --text-primary: #1d1d1f;
+            --text-secondary: #86868b;
+            --card-bg: #ffffff;
+            --accent-color: #0071e3;
+            --border-color: rgba(0, 0, 0, 0.06);
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.04);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.08);
         }
         
-        body { margin: 0; font-family: 'Inter', sans-serif; background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
+        body { margin: 0; font-family: 'Inter', -apple-system, sans-serif; background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
         
         /* Zwevende, transparante Navbar */
-        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: rgba(251, 251, 253, 0.82); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(0,0,0,0.05); }
         .logo a { font-weight: 900; font-size: 1.6rem; text-decoration: none; color: #111; letter-spacing: -1.5px; text-transform: uppercase;}
         .nav-links a { text-decoration: none; color: #666; margin-left: 40px; font-weight: 600; font-size: 0.95rem; transition: color 0.3s; }
         .nav-links a:hover, .nav-links a.active { color: #111; }
 
-        /* Full-Viewport Hero Sectie (Met lokale racefiets foto!) */
+        /* Full-Viewport Hero Sectie */
         .hero { min-height: 85vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(to bottom, rgba(10,10,10,0.4), rgba(10,10,10,0.9)), url('racefiets_header.jpg') center/cover; color: white; text-align: center; padding: 0 20px; animation: fadeUp 1.2s cubic-bezier(0.165, 0.84, 0.44, 1); }
         .hero h1 { font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 900; letter-spacing: -2px; margin-bottom: 20px; text-transform: uppercase; line-height: 1; }
         .hero p { font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 300; color: #ddd; max-width: 650px; margin-bottom: 40px; line-height: 1.6; }
@@ -57,12 +67,37 @@
         .btn-outline { display: block; text-align: center; margin-top: 25px; padding: 15px; border: 2px solid #111; color: #111; text-decoration: none; font-weight: 800; border-radius: 12px; transition: all 0.3s; text-transform: uppercase; letter-spacing: 1px;}
         .btn-outline:hover { background: #111; color: white; }
 
-        /* Innovatie Sectie (Met lokale detail foto) */
+        /* Innovatie Sectie */
         .innovation { display: flex; flex-wrap: wrap; background: var(--bg-dark); color: white; }
         .inn-text { flex: 1; padding: 120px 8%; display: flex; flex-direction: column; justify-content: center; min-width: 320px; }
         .inn-text h2 { font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 900; letter-spacing: -1.5px; margin-bottom: 25px; line-height: 1.1; }
         .inn-text p { color: #999; font-size: 1.15rem; line-height: 1.8; margin-bottom: 40px; }
-        .inn-img { flex: 1; background: url('carbon_detail.jpg') center/cover; min-height: 500px; }
+        
+        /* DE MAGISCHE SCROLL ANIMATIE CSS */
+        .inn-img { 
+            flex: 1;
+            position: relative; 
+            overflow: hidden; 
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #111; /* Donkere achtergrond voor contrast */
+        }
+
+        .floating-cage {
+            width: 80%;
+            max-width: 350px;
+            transform: translateY(150px) rotate(-180deg) scale(0.8);
+            opacity: 0;
+            transition: transform 1.5s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 1s ease-out;
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5)); 
+        }
+
+        .floating-cage.show {
+            transform: translateY(0) rotate(0deg) scale(1);
+            opacity: 1;
+        }
 
         /* Reviews */
         .reviews { padding: 120px 5%; background: white; text-align: center; }
@@ -153,20 +188,19 @@
         </div>
     </section>
 
-    <!-- Innovatie Sectie -->
-    <!-- Innovatie Sectie -->
-<section class="innovation" id="carbon-sectie">
-    <div class="inn-text">
-        <h2>Gemaakt van Toray T800 Carbon.</h2>
-        <p>Wij geloven niet in standaard oplossingen voor op de weg. Onze componenten worden laag voor laag met de hand opgebouwd uit Japans Toray T800 carbonvezel. Dit resulteert in een ongeëvenaarde stijfheid-gewichtsverhouding, waardoor elke trap raak is zonder in te leveren op stuurcomfort.</p>
-        <a href="over-ons.html" class="btn-hero" style="align-self: flex-start; background: transparent; border: 2px solid white; color: white;">Lees ons verhaal</a>
-    </div>
-    
-    <!-- HIER KOMT JOUW NIEUWE BLOKJE -->
-    <div class="inn-img">
-        <img src="bidon_2.png" alt="Zwevende Carbon Bidonhouder" class="floating-cage" id="spin-bidon">
-    </div>
-</section>
+    <!-- Innovatie Sectie met Scroll Animatie -->
+    <section class="innovation" id="carbon-sectie">
+        <div class="inn-text">
+            <h2>Gemaakt van Toray T800 Carbon.</h2>
+            <p>Wij geloven niet in standaard oplossingen voor op de weg. Onze componenten worden laag voor laag met de hand opgebouwd uit Japans Toray T800 carbonvezel. Dit resulteert in een ongeëvenaarde stijfheid-gewichtsverhouding, waardoor elke trap raak is zonder in te leveren op stuurcomfort.</p>
+            <a href="over-ons.html" class="btn-hero" style="align-self: flex-start; background: transparent; border: 2px solid white; color: white;">Lees ons verhaal</a>
+        </div>
+        
+        <!-- HIER STAAT JOUW MAGISCHE BLOKJE -->
+        <div class="inn-img">
+            <img src="bidon_2.png" alt="Zwevende Carbon Bidonhouder" class="floating-cage" id="spin-bidon">
+        </div>
+    </section>
 
     <!-- Reviews -->
     <section class="reviews">
@@ -229,7 +263,8 @@
             <p>Veilig betalen: iDEAL | Bancontact | Creditcard | Apple Pay</p>
         </div>
     </footer>
-    <!-- HIER PLAK JE HET SCRIPT -->
+
+    <!-- Het JavaScript voor de magische spin -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const bidon = document.getElementById("spin-bidon");
@@ -243,7 +278,5 @@
             observer.observe(bidon.parentElement);
         });
     </script>
-</body>
-</html>
 </body>
 </html>
