@@ -1,8 +1,10 @@
 /* ==========================================
    CARBONPRO - DESIGN SYSTEM (APPLE-STYLE)
    ========================================== */
-
 :root {
+    --bg-dark: #0a0a0a;
+    --text-light: #f5f5f7;
+    --accent: #d4af37; 
     --bg-color: #fbfbfd;
     --text-primary: #1d1d1f;
     --text-secondary: #86868b;
@@ -13,11 +15,20 @@
     --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+::selection {
+    background: var(--accent-color);
+    color: white;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 body {
@@ -34,171 +45,299 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 8%;
-    background: rgba(251, 251, 253, 0.82); /* Kleine typo gefixt: 293 bestond niet in RGB */
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    padding: 20px 5%;
+    background: rgba(251, 251, 253, 0.82);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     position: sticky;
     top: 0;
     z-index: 1000;
     border-bottom: 1px solid var(--border-color);
 }
 
-.logo {
-    font-size: 1.3rem;
-    font-weight: 600;
-    letter-spacing: -0.01em;
+.logo a {
+    font-weight: 900;
+    font-size: 1.6rem;
+    text-decoration: none;
+    color: #111;
+    letter-spacing: -1.5px;
+    text-transform: uppercase;
 }
 
 .nav-links a {
     text-decoration: none;
-    color: var(--text-primary);
-    margin-left: 30px;
-    font-size: 0.9rem;
-    font-weight: 400;
-    transition: color 0.2s ease;
+    color: var(--text-secondary);
+    margin-left: 40px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.3s;
 }
 
-.nav-links a:hover {
-    color: var(--accent-color);
+.nav-links a:hover, 
+.nav-links a.active {
+    color: var(--text-primary);
 }
 
 /* ==========================================
-   HERO SECTIE
+   HERO SECTIE (Video Loop)
    ========================================== */
 .hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-dark);
+    color: white;
     text-align: center;
-    padding: 100px 20px 80px 20px;
+    padding: 140px 20px;
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    object-fit: cover;
+    opacity: 0.6;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
     max-width: 800px;
-    margin: 0 auto;
+    animation: fadeUp 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .hero h1 {
-    font-size: 3.5rem;
-    letter-spacing: -0.03em;
-    font-weight: 600;
-    margin-bottom: 15px;
-    line-height: 1.1;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 900;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    line-height: 1;
 }
 
 .hero p {
-    font-size: 1.3rem;
-    color: var(--text-secondary);
-    margin-bottom: 30px;
-    font-weight: 400;
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-weight: 300;
+    color: #ddd;
+    max-width: 650px;
+    margin: 0 auto 40px auto;
+    line-height: 1.6;
+}
+
+.btn-hero {
+    padding: 18px 45px;
+    background: white;
+    color: black;
+    font-weight: 800;
+    font-size: 1.1rem;
+    text-decoration: none;
+    border-radius: 40px;
+    transition: all 0.4s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+}
+
+.btn-hero:hover {
+    background: var(--bg-dark);
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 /* ==========================================
-   BUTTONS
+   USPS BALK
    ========================================== */
-.btn-primary {
-    background-color: var(--accent-color);
-    color: white;
-    padding: 12px 24px;
-    border-radius: 999px;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 1rem;
-    display: inline-block;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-.btn-primary:hover {
-    opacity: 0.9;
-    transform: scale(1.02);
-}
-
-.btn-buy {
-    background-color: var(--text-primary);
-    color: white;
-    padding: 10px 22px;
-    border-radius: 999px;
-    text-decoration: none;
+.usps {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    background: var(--bg-dark);
+    color: #aaa;
+    padding: 25px 20px;
     font-size: 0.85rem;
-    font-weight: 500;
-    display: inline-block;
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
-.btn-buy:hover {
-    background-color: var(--accent-color);
-    transform: translateY(-2px);
+.usps strong {
+    color: white;
 }
 
 /* ==========================================
    PRODUCT GRID & KAARTEN
    ========================================== */
-.products {
+.products-sec {
+    padding: 120px 5%;
+    text-align: center;
+    background: #fafafa;
+}
+
+.products-sec h2 {
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    margin-bottom: 70px;
+}
+
+.grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    padding: 40px 8% 100px 8%;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .card {
     background: var(--card-bg);
-    padding: 30px;
     border-radius: 24px;
-    text-align: center;
-    box-shadow: var(--shadow-soft);
+    padding: 25px;
     border: 1px solid var(--border-color);
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    text-align: left;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
 .card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-15px);
     box-shadow: var(--shadow-hover);
+    border-color: #ddd;
+}
+
+.badge {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    background: var(--bg-dark);
+    color: white;
+    padding: 8px 16px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    border-radius: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 10;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card img, 
+.card model-viewer {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 16px;
+    background: #f5f5f7;
+    margin-bottom: 25px;
 }
 
 .card h3 {
-    font-size: 1.4rem;
-    font-weight: 600;
-    margin-bottom: 8px;
-    letter-spacing: -0.01em;
+    font-size: 1.6rem;
+    margin: 0 0 10px 0;
+    font-weight: 800;
+    letter-spacing: -0.5px;
 }
 
 .card p {
     color: var(--text-secondary);
-    font-size: 0.95rem;
-    margin-bottom: 20px;
+    font-size: 1rem;
+    margin-bottom: 25px;
+    line-height: 1.5;
 }
 
 .price {
-    display: block;
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: 1.3rem;
+    font-weight: 900;
     color: var(--text-primary);
     margin-bottom: 20px;
 }
 
+.btn-outline {
+    display: block;
+    text-align: center;
+    padding: 15px;
+    border: 2px solid var(--text-primary);
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 800;
+    border-radius: 12px;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-outline:hover {
+    background: var(--text-primary);
+    color: white;
+}
+
 /* ==========================================
-   SCROLL ANIMATIE (ZWEVENDE BIDONHOUDER)
+   INNOVATIE SECTIE (Zwevende Bidonhouder)
    ========================================== */
-/* Strakke, rustige achtergrond zonder meedraaiende zooi */
-.inn-img { 
+.innovation {
+    display: flex;
+    flex-wrap: wrap;
+    background: var(--bg-dark);
+    color: white;
+}
+
+.inn-text {
     flex: 1;
-    position: relative; 
-    overflow: hidden; 
+    padding: 120px 8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 320px;
+}
+
+.inn-text h2 {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    margin-bottom: 25px;
+    line-height: 1.1;
+}
+
+.inn-text p {
+    color: var(--text-secondary);
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+.inn-img {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
     min-height: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #0a0a0a; /* Vaste, rustige donkere kleur */
+    background: var(--bg-dark);
 }
 
-/* Alleen de bidonhouder maakt een soepele entree */
 .floating-cage {
     width: 70%;
     max-width: 300px;
     transform: translateY(80px) rotate(-90deg) scale(0.9);
     opacity: 0;
     transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1s ease-out;
-    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.4)); 
+    filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.4));
 }
 
 .floating-cage.show {
@@ -206,21 +345,154 @@ body {
     opacity: 1;
 }
 
-/* Deze class activeert de animatie */
-.floating-cage.show {
-    /* Eindpositie: perfect rechtop en in het midden */
-    transform: translateY(0) rotate(0deg) scale(1);
-    opacity: 1;
+/* ==========================================
+   REVIEWS
+   ========================================== */
+.reviews {
+    padding: 120px 5%;
+    background: white;
+    text-align: center;
+}
+
+.rev-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 60px auto 0 auto;
+}
+
+.rev-card {
+    background: #f9f9f9;
+    padding: 40px;
+    border-radius: 24px;
+    width: 340px;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.rev-card:hover {
+    transform: translateY(-5px);
+}
+
+.stars {
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+}
+
+/* ==========================================
+   NIEUWSBRIEF
+   ========================================== */
+.newsletter {
+    padding: 100px 20px;
+    text-align: center;
+    background: #f5f5f7;
+}
+
+.newsletter h2 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+}
+
+.newsletter form {
+    display: flex;
+    justify-content: center;
+    max-width: 500px;
+    margin: 40px auto 0 auto;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    border-radius: 40px;
+}
+
+.newsletter input {
+    flex: 1;
+    padding: 20px 25px;
+    border: none;
+    border-radius: 40px 0 0 40px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    outline: none;
+}
+
+.newsletter button {
+    padding: 20px 40px;
+    background: var(--text-primary);
+    color: white;
+    border: none;
+    border-radius: 0 40px 40px 0;
+    font-weight: 800;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: background 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.newsletter button:hover {
+    background: #333;
 }
 
 /* ==========================================
    FOOTER
    ========================================== */
 footer {
-    text-align: center;
-    padding: 40px 20px;
-    background-color: #f5f5f7;
+    background: #050505;
+    color: white;
+    padding: 100px 5% 40px;
+}
+
+.foot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto 80px auto;
+}
+
+footer h4 {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+footer ul li {
+    margin-bottom: 15px;
+}
+
+footer ul li a {
     color: var(--text-secondary);
-    font-size: 0.85rem;
-    border-top: 1px solid var(--border-color);
+    text-decoration: none;
+    transition: color 0.3s;
+    font-size: 0.95rem;
+}
+
+footer ul li a:hover {
+    color: white;
+}
+
+/* ==========================================
+   ANIMATIES
+   ========================================== */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
