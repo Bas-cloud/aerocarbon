@@ -229,5 +229,21 @@
             <p>Veilig betalen: iDEAL | Bancontact | Creditcard | Apple Pay</p>
         </div>
     </footer>
+    <!-- HIER PLAK JE HET SCRIPT -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const bidon = document.getElementById("spin-bidon");
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        bidon.classList.add("show");
+                    }
+                });
+            }, { threshold: 0.4 });
+            observer.observe(bidon.parentElement);
+        });
+    </script>
+</body>
+</html>
 </body>
 </html>
