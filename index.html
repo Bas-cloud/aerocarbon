@@ -34,16 +34,50 @@
         body { margin: 0; font-family: 'Inter', -apple-system, sans-serif; background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
         
         /* Zwevende, transparante Navbar */
-        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: rgba(251, 251, 253, 0.82); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: rgba(251, 251, 253, 0.82); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border-color); }
         .logo a { font-weight: 900; font-size: 1.6rem; text-decoration: none; color: #111; letter-spacing: -1.5px; text-transform: uppercase;}
         .nav-links a { text-decoration: none; color: #666; margin-left: 40px; font-weight: 600; font-size: 0.95rem; transition: color 0.3s; }
         .nav-links a:hover, .nav-links a.active { color: #111; }
 
-        /* Full-Viewport Hero Sectie */
-        .hero { min-height: 85vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(to bottom, rgba(10,10,10,0.4), rgba(10,10,10,0.9)), url('racefiets_header.jpg') center/cover; color: white; text-align: center; padding: 0 20px; animation: fadeUp 1.2s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        /* Hero Sectie met Video Loop Achtergrond */
+        .hero { 
+            position: relative;
+            overflow: hidden;
+            min-height: 85vh; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            background: #0a0a0a; 
+            color: white; 
+            text-align: center; 
+            padding: 140px 20px; 
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            object-fit: cover;
+            opacity: 0.6; /* Subtiel donker voor leesbaarheid tekst */
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            animation: fadeUp 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
         .hero h1 { font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 900; letter-spacing: -2px; margin-bottom: 20px; text-transform: uppercase; line-height: 1; }
-        .hero p { font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 300; color: #ddd; max-width: 650px; margin-bottom: 40px; line-height: 1.6; }
-        .btn-hero { padding: 18px 45px; background: white; color: black; font-weight: 800; font-size: 1.1rem; text-decoration: none; border-radius: 40px; transition: all 0.4s ease; text-transform: uppercase; letter-spacing: 1px;}
+        .hero p { font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 300; color: #ddd; max-width: 650px; margin: 0 auto 40px auto; line-height: 1.6; }
+        .btn-hero { padding: 18px 45px; background: white; color: black; font-weight: 800; font-size: 1.1rem; text-decoration: none; border-radius: 40px; transition: all 0.4s ease; text-transform: uppercase; letter-spacing: 1px; display: inline-block;}
         .btn-hero:hover { background: var(--bg-dark); color: white; transform: scale(1.05); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
 
         /* Donkere, strakke USP Balk */
@@ -67,13 +101,12 @@
         .btn-outline { display: block; text-align: center; margin-top: 25px; padding: 15px; border: 2px solid #111; color: #111; text-decoration: none; font-weight: 800; border-radius: 12px; transition: all 0.3s; text-transform: uppercase; letter-spacing: 1px;}
         .btn-outline:hover { background: #111; color: white; }
 
-        /* Innovatie Sectie */
+        /* Innovatie Sectie met Schone Zweef-Animatie */
         .innovation { display: flex; flex-wrap: wrap; background: var(--bg-dark); color: white; }
         .inn-text { flex: 1; padding: 120px 8%; display: flex; flex-direction: column; justify-content: center; min-width: 320px; }
         .inn-text h2 { font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 900; letter-spacing: -1.5px; margin-bottom: 25px; line-height: 1.1; }
         .inn-text p { color: #999; font-size: 1.15rem; line-height: 1.8; margin-bottom: 40px; }
         
-        /* DE MAGISCHE SCROLL ANIMATIE CSS */
         .inn-img { 
             flex: 1;
             position: relative; 
@@ -82,16 +115,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #111; /* Donkere achtergrond voor contrast */
+            background: #0a0a0a; /* Vaste, rustige achtergrond */
         }
 
         .floating-cage {
-            width: 80%;
-            max-width: 350px;
-            transform: translateY(150px) rotate(-180deg) scale(0.8);
+            width: 70%;
+            max-width: 300px;
+            transform: translateY(80px) rotate(-90deg) scale(0.9);
             opacity: 0;
-            transition: transform 1.5s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 1s ease-out;
-            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5)); 
+            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1s ease-out;
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.4)); 
         }
 
         .floating-cage.show {
@@ -141,18 +174,24 @@
         </div>
     </nav>
 
-    <!-- Hero -->
+    <!-- Hero met Video Loop -->
     <header class="hero">
-        <h1>Compromisloze<br>Prestaties.</h1>
-        <p>Ontdek onze collectie ultralichte, aerodynamische racefiets upgrades. Ontworpen voor renners die weigeren concessies te doen in de jacht op seconden.</p>
-        <a href="#collectie" class="btn-hero">Ontdek de collectie</a>
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="fiets_loop.mp4" type="video/mp4">
+            Jouw browser ondersteunt geen video.
+        </video>
+        <div class="hero-content">
+            <h1>Compromisloze<br>Prestaties.</h1>
+            <p>Ontdek onze collectie ultralichte, aerodynamische racefiets upgrades. Ontworpen voor renners die weigeren concessies te doen in de jacht op seconden.</p>
+            <a href="#collectie" class="btn-hero">Ontdek de collectie</a>
+        </div>
     </header>
 
     <!-- USPs -->
     <div class="usps">
-        <span> <strong>Vóór 17:00 besteld</strong>, morgen in huis</span>
-        <span> <strong>30 dagen bedenktijd</strong> & ruilen</span>
-        <span> <strong>100% Toray Carbon</strong> getest in het lab</span>
+        <span>⚡ <strong>Vóór 17:00 besteld</strong>, morgen in huis</span>
+        <span>🛡️ <strong>30 dagen bedenktijd</strong> & ruilen</span>
+        <span>🔬 <strong>100% Toray Carbon</strong> getest in het lab</span>
     </div>
 
     <!-- Producten -->
@@ -188,7 +227,7 @@
         </div>
     </section>
 
-    <!-- Innovatie Sectie met Scroll Animatie -->
+    <!-- Innovatie Sectie met Strakke Bidonhouder Scroll-Animatie -->
     <section class="innovation" id="carbon-sectie">
         <div class="inn-text">
             <h2>Gemaakt van Toray T800 Carbon.</h2>
@@ -196,7 +235,6 @@
             <a href="over-ons.html" class="btn-hero" style="align-self: flex-start; background: transparent; border: 2px solid white; color: white;">Lees ons verhaal</a>
         </div>
         
-        <!-- HIER STAAT JOUW MAGISCHE BLOKJE -->
         <div class="inn-img">
             <img src="bidon_2.png" alt="Zwevende Carbon Bidonhouder" class="floating-cage" id="spin-bidon">
         </div>
@@ -264,7 +302,7 @@
         </div>
     </footer>
 
-    <!-- Het JavaScript voor de magische spin -->
+    <!-- JavaScript voor de soepele scroll-animatie -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const bidon = document.getElementById("spin-bidon");
