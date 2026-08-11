@@ -35,7 +35,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px 8%;
-    background: rgba(251, 251, 293, 0.82);
+    background: rgba(251, 251, 253, 0.82); /* Kleine typo gefixt: 293 bestond niet in RGB */
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     position: sticky;
@@ -177,7 +177,36 @@ body {
 }
 
 /* ==========================================
-   FOOTER (Toekomstbestendig)
+   SCROLL ANIMATIE (ZWEVENDE BIDONHOUDER)
+   ========================================== */
+.inn-img { 
+    position: relative; 
+    overflow: hidden; 
+    min-height: 400px; /* Zorgt voor genoeg ruimte voor de animatie */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.floating-cage {
+    width: 80%;
+    max-width: 350px;
+    /* Startpositie: onzichtbaar, lager in beeld en 180 graden gedraaid */
+    transform: translateY(150px) rotate(-180deg) scale(0.8);
+    opacity: 0;
+    transition: transform 1.5s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 1s ease-out;
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15)); /* Mooie zachte Apple-schaduw op het product */
+}
+
+/* Deze class activeert de animatie */
+.floating-cage.show {
+    /* Eindpositie: perfect rechtop en in het midden */
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 1;
+}
+
+/* ==========================================
+   FOOTER
    ========================================== */
 footer {
     text-align: center;
