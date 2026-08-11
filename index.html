@@ -5,10 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CarbonPro | Fietsaccessoires</title>
     <link rel="stylesheet" href="style.css">
+    
+    <!-- 1. Premium Lettertype Inladen -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- 2. 3D Model Viewer Script -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+
+    <!-- 3. Premium Animaties & Styling Overrides -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif; /* Luxe lettertype */
+        }
+
+        /* Dynamische Hero Sectie met Achtergrondfoto */
+        .hero {
+            background-image: linear-gradient(rgba(17, 17, 17, 0.7), rgba(17, 17, 17, 0.9)), url('https://images.unsplash.com/photo-1511994298241-608e28f14fde?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 20px;
+            text-align: center;
+            animation: fadeIn 1.5s ease-out;
+        }
+        .hero h1 { font-weight: 800; font-size: 3rem; margin-bottom: 15px; letter-spacing: -1px; }
+        .hero p { font-weight: 300; font-size: 1.2rem; color: #ddd; }
+
+        /* Zwevende effecten voor Productkaarten */
+        .card {
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+        }
+        .card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        /* Zwevende effecten voor Review kaarten */
+        .review-card {
+            transition: transform 0.3s ease;
+        }
+        .review-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Vloeiende Knoppen */
+        .btn-primary {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .btn-primary:hover {
+            background: #333;
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Animatie voor de Hero */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">CarbonPro.</a></div>
+    <nav class="navbar" style="font-weight: 600;">
+        <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit; font-weight: 800; letter-spacing: -1px;">CarbonPro.</a></div>
         <div class="nav-links">
             <a href="index.html" style="color: var(--accent-color);">Home</a>
             <a href="over-ons.html">Over ons</a>
@@ -21,91 +83,92 @@
         <p>De ultieme carbon upgrades voor jouw rit.</p>
     </header>
 
-    <!-- USP-Balk voor maximale betrouwbaarheid -->
-    <div style="background: #f5f5f7; padding: 15px 20px; text-align: center; font-size: 0.95rem; color: var(--text-secondary); display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; border-bottom: 1px solid var(--border-color); margin-bottom: 50px;">
-        <span>✓ <strong>Vóór 17:00 besteld</strong>, morgen in huis</span>
-        <span>✓ <strong>30 dagen bedenktijd</strong> & eenvoudig ruilen</span>
-        <span>✓ <strong>100% Getest</strong> op maximale stijfheid</span>
+    <!-- USP-Balk -->
+    <div style="background: #f5f5f7; padding: 15px 20px; text-align: center; font-size: 0.95rem; color: #555; display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; border-bottom: 1px solid #ddd; margin-bottom: 60px;">
+        <span>✓ <strong style="color: #111;">Vóór 17:00 besteld</strong>, morgen in huis</span>
+        <span>✓ <strong style="color: #111;">30 dagen bedenktijd</strong> & eenvoudig ruilen</span>
+        <span>✓ <strong style="color: #111;">100% Getest</strong> op maximale stijfheid</span>
     </div>
 
     <section class="products">
-        <!-- Categorie 1: Bidonhouders -->
+        <!-- Categorie 1: Bidonhouders (Met 3D Viewer!) -->
         <div class="card">
-            <img src="bidon_1.png" alt="Carbon Bidonhouder" style="width: 100%; border-radius: 12px; margin-bottom: 15px; background: #eee; aspect-ratio: 1/1;">
+            <!-- 3D Viewer - Laat bidon_1.png zien tot de 3D file er is -->
+            <model-viewer src="bidonhouder_3d.glb" poster="bidon_1.png" alt="3D Carbon Bidonhouder" auto-rotate camera-controls disable-zoom style="width: 100%; height: 300px; background: #f8f8f8; border-radius: 12px; margin-bottom: 15px;"></model-viewer>
             <h3>Bidonhouders</h3>
             <p>17 gram. Maximale grip.</p>
-            <span class="price">Vanaf € 39</span>
-            <br>
+            <span class="price" style="font-weight: 800;">Vanaf € 39</span>
+            <br><br>
             <a href="bidonhouders.html" class="btn-primary">Bekijk collectie</a>
         </div>
 
         <!-- Categorie 2: Computerhouders -->
         <div class="card">
-            <img src="fietscomputerhouder_1.png" alt="Fietscomputerhouder" style="width: 100%; border-radius: 12px; margin-bottom: 15px; background: #eee; aspect-ratio: 1/1;">
+            <img src="fietscomputerhouder_1.png" alt="Fietscomputerhouder" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px; margin-bottom: 15px; background: #f8f8f8;">
             <h3>Computerhouders</h3>
             <p>Aero en perfect afleesbaar.</p>
-            <span class="price">Vanaf € 29</span>
-            <br>
+            <span class="price" style="font-weight: 800;">Vanaf € 29</span>
+            <br><br>
             <a href="computerhouders.html" class="btn-primary">Bekijk collectie</a>
         </div>
 
         <!-- Categorie 3: Sturen -->
         <div class="card">
-            <img src="stuur_1.png" alt="Carbon Stuur" style="width: 100%; border-radius: 12px; margin-bottom: 15px; background: #eee; aspect-ratio: 1/1;">
+            <img src="stuur_1.png" alt="Carbon Stuur" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px; margin-bottom: 15px; background: #f8f8f8;">
             <h3>Sturen & Cockpits</h3>
             <p>Volledige integratie.</p>
-            <span class="price">Vanaf € 249</span>
-            <br>
+            <span class="price" style="font-weight: 800;">Vanaf € 249</span>
+            <br><br>
             <a href="sturen.html" class="btn-primary">Bekijk collectie</a>
         </div>
     </section>
 
-    <!-- Social Proof / Reviews (Gave visuals die vertrouwen wekken!) -->
-    <section style="background: #f5f5f7; padding: 60px 20px; text-align: center; margin-top: 60px;">
-        <h2 style="font-size: 2rem; margin-bottom: 40px;">Wat onze rijders zeggen</h2>
+    <!-- Social Proof / Reviews -->
+    <section style="background: #f5f5f7; padding: 80px 20px; text-align: center; margin-top: 80px;">
+        <h2 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 50px; letter-spacing: -1px;">Wat onze rijders zeggen</h2>
         <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; max-width: 1000px; margin: 0 auto;">
             
-            <div style="background: white; padding: 30px; border-radius: 16px; width: 300px; box-shadow: var(--shadow-soft); text-align: left;">
-                <div style="color: #f5c518; font-size: 1.2rem; margin-bottom: 15px;">★★★★★</div>
-                <p style="color: var(--text-secondary); font-style: italic; margin-bottom: 15px;">"De stijfheid van de Pro Integratie Cockpit is bizar. Elke watt is snelheid. Ook netjes de volgende dag in huis, topservice."</p>
-                <h4 style="margin: 0; font-weight: 600;">- Martijn D.</h4>
+            <div class="review-card" style="background: white; padding: 40px 30px; border-radius: 16px; width: 300px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: left;">
+                <div style="color: #f5c518; font-size: 1.4rem; margin-bottom: 15px; letter-spacing: 2px;">★★★★★</div>
+                <p style="color: #555; font-style: italic; margin-bottom: 20px; line-height: 1.6;">"De stijfheid van de Pro Integratie Cockpit is bizar. Elke watt is snelheid. Ook netjes de volgende dag in huis, topservice."</p>
+                <h4 style="margin: 0; font-weight: 600; color: #111;">- Martijn D.</h4>
             </div>
 
-            <div style="background: white; padding: 30px; border-radius: 16px; width: 300px; box-shadow: var(--shadow-soft); text-align: left;">
-                <div style="color: #f5c518; font-size: 1.2rem; margin-bottom: 15px;">★★★★★</div>
-                <p style="color: var(--text-secondary); font-style: italic; margin-bottom: 15px;">"Eindelijk een bidonhouder die mijn bidon op de kasseien niet verliest. Topkwaliteit carbon en weegt letterlijk niks."</p>
-                <h4 style="margin: 0; font-weight: 600;">- Lisa V.</h4>
+            <div class="review-card" style="background: white; padding: 40px 30px; border-radius: 16px; width: 300px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: left;">
+                <div style="color: #f5c518; font-size: 1.4rem; margin-bottom: 15px; letter-spacing: 2px;">★★★★★</div>
+                <p style="color: #555; font-style: italic; margin-bottom: 20px; line-height: 1.6;">"Eindelijk een bidonhouder die mijn bidon op de kasseien niet verliest. Topkwaliteit carbon en weegt letterlijk niks."</p>
+                <h4 style="margin: 0; font-weight: 600; color: #111;">- Lisa V.</h4>
             </div>
 
         </div>
     </section>
 
     <!-- Professionele Footer -->
-    <footer style="background: #111; color: white; padding: 60px 20px; text-align: center;">
-        <div style="max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px; text-align: left;">
-            <div style="width: 250px;">
-                <h3 style="color: white; margin-bottom: 15px;">CarbonPro.</h3>
-                <p style="color: #888; font-size: 0.9rem; line-height: 1.6;">De ultieme carbon upgrades voor jouw rit. Ontworpen voor snelheid, gebouwd voor vertrouwen.</p>
+    <footer style="background: #111; color: white; padding: 80px 20px 40px 20px; text-align: center;">
+        <div style="max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; text-align: left;">
+            <div style="width: 300px;">
+                <h3 style="color: white; margin-bottom: 20px; font-size: 1.5rem; font-weight: 800; letter-spacing: -1px;">CarbonPro.</h3>
+                <p style="color: #999; font-size: 0.95rem; line-height: 1.8;">De ultieme carbon upgrades voor jouw rit. Ontworpen voor snelheid, gebouwd voor vertrouwen.</p>
             </div>
             <div>
-                <h4 style="color: white; margin-bottom: 15px;">Klantenservice</h4>
-                <ul style="list-style: none; padding: 0; margin: 0; line-height: 2;">
-                    <li><a href="faq.html" style="color: #888; text-decoration: none;">Veelgestelde Vragen (FAQ)</a></li>
-                    <li><a href="contact.html" style="color: #888; text-decoration: none;">Contact opnemen</a></li>
-                    <li><a href="over-ons.html" style="color: #888; text-decoration: none;">Over ons & Testlab</a></li>
+                <h4 style="color: white; margin-bottom: 20px; font-weight: 600;">Klantenservice</h4>
+                <ul style="list-style: none; padding: 0; margin: 0; line-height: 2.2;">
+                    <li><a href="faq.html" style="color: #999; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#999'">Veelgestelde Vragen (FAQ)</a></li>
+                    <li><a href="contact.html" style="color: #999; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#999'">Contact opnemen</a></li>
+                    <li><a href="over-ons.html" style="color: #999; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#999'">Over ons & Testlab</a></li>
                 </ul>
             </div>
             <div>
-                <h4 style="color: white; margin-bottom: 15px;">Juridisch</h4>
-                <ul style="list-style: none; padding: 0; margin: 0; line-height: 2;">
-                    <li><a href="voorwaarden.html" style="color: #888; text-decoration: none;">Algemene Voorwaarden</a></li>
-                    <li><a href="voorwaarden.html" style="color: #888; text-decoration: none;">Retourbeleid (30 Dagen)</a></li>
+                <h4 style="color: white; margin-bottom: 20px; font-weight: 600;">Juridisch</h4>
+                <ul style="list-style: none; padding: 0; margin: 0; line-height: 2.2;">
+                    <li><a href="voorwaarden.html" style="color: #999; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#999'">Algemene Voorwaarden</a></li>
+                    <li><a href="voorwaarden.html" style="color: #999; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#999'">Retourbeleid (30 Dagen)</a></li>
                 </ul>
             </div>
         </div>
-        <div style="border-top: 1px solid #333; margin-top: 40px; padding-top: 20px; color: #888; font-size: 0.8rem;">
-            <p style="margin-bottom: 10px;">Veilig betalen met: iDEAL | Bancontact | Creditcard | Apple Pay</p>
+        <div style="border-top: 1px solid #333; margin-top: 60px; padding-top: 30px; color: #777; font-size: 0.85rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; max-width: 1100px; margin-left: auto; margin-right: auto;">
             <p>&copy; 2026 CarbonPro. Alle rechten voorbehouden.</p>
+            <p>Veilig betalen met: iDEAL | Bancontact | Creditcard | Apple Pay</p>
         </div>
     </footer>
 </body>
